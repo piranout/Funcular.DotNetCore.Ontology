@@ -1,4 +1,4 @@
-# Funcular.Ontology
+# Funcular.DotNetCore.Ontology
 ##### A coherent and convenient set of interfaces and base classes for entity domains. 
 
 * Dispense with boilerplate persistence code. 

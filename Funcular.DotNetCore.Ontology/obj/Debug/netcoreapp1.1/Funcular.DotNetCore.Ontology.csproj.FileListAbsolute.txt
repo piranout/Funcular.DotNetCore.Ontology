@@ -1,7 +1,0 @@
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\bin\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.deps.json
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\bin\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.dll
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\bin\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.pdb
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\obj\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.csprojResolveAssemblyReference.cache
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\obj\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.AssemblyInfo.cs
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\obj\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.dll
-C:\Users\p747527\Documents\GitHub\Funcular.DotNetCore.Ontology\Funcular.DotNetCore.Ontology\obj\Debug\netcoreapp1.1\Funcular.DotNetCore.Ontology.pdb
