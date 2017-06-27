@@ -34,7 +34,7 @@ the project properties dialog.
 ### Type Dependency Diagram
 This diagram shows the inheritance tree of the Funcular.Ontology.Archetypes namespace:
 
-![Dependency Diagram](/Archetypes/archetypes-type-dependencies.png?raw=true "Dependency Graph")
+![Dependency Diagram](Funcular.DotNetCore.Ontology/Funcular.DotNetCore.Ontology/Archetypes/archetypes-type-dependencies.png "Dependency Graph")
 
 ### Leveraging by Funcular.DataProviders
 
