@@ -9,7 +9,9 @@
 ### Important Note
 This package was forked for .NET Core from Funcular.Ontology, because
 Visual Studio doesn't properly support multi-framework targeting in
-the project properties dialog. 
+the project properties dialog. Once it does, we'll evaluate whether 
+to merge the original project into this one to support classic .NET
+versions as well as DotNetCore with a single package.
 
 ### Examples 
 ```csharp

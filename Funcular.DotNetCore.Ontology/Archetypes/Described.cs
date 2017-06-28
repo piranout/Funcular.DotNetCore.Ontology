@@ -1,14 +1,11 @@
 ﻿#region File info
 // *********************************************************************************************************
-// Funcular.Ontology>Funcular.Ontology>Described.cs
-// Created: 2015-07-01 2:17 PM
-// Updated: 2015-07-01 2:26 PM
-// By: Paul Smith 
+// Funcular.Ontology.Archetypes.Described.cs
 // 
 // *********************************************************************************************************
 // LICENSE: The MIT License (MIT)
 // *********************************************************************************************************
-// Copyright (c) 2010-2015 <copyright holders>
+// Copyright (c) 2010-2017 Funcular Labs and Paul Smith
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,27 +29,31 @@
 #endregion
 
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System;
 
 namespace Funcular.DotNetCore.Ontology.Archetypes
 {
-    public abstract class Described<TId> : Labeled<TId>, IDescribed
+    public abstract class Described<TId> : Labeled<TId>, IDescribed where TId : IEquatable<TId>
     {
+        #region Nonpublic fields
         protected string _description;
+        #endregion
+
 
         #region Implementation of IDescribed
-
         public virtual string Description
         {
             get => _description;
             set
             {
+                if (value == _description)
+                {
+                    return;
+                }
                 _description = value;
                 OnPropertyChanged();
             }
         }
-
         #endregion
     }
 }

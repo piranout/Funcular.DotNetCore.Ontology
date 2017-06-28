@@ -1,14 +1,11 @@
 ﻿#region File info
 // *********************************************************************************************************
-// Funcular.Ontology>Funcular.Ontology>Named.cs
-// Created: 2015-07-01 2:18 PM
-// Updated: 2015-07-01 2:26 PM
-// By: Paul Smith 
+// Funcular.Ontology.Archetypes.Named.cs
 // 
 // *********************************************************************************************************
 // LICENSE: The MIT License (MIT)
 // *********************************************************************************************************
-// Copyright (c) 2010-2015 <copyright holders>
+// Copyright (c) 2010-2017 Funcular Labs and Paul Smith
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,24 +29,33 @@
 #endregion
 
 
+#region Usings
+using System; 
+#endregion
+
 namespace Funcular.DotNetCore.Ontology.Archetypes
 {
-    public abstract class Named<TId> : Modifyable<TId>, INamed
+    public abstract class Named<TId> : Modifyable<TId>, INamed where TId : IEquatable<TId>
     {
+        #region Nonpublic fields
         protected string _name;
+        #endregion
+
 
         #region Implementation of INamed
-
         public virtual string Name
         {
             get => _name;
             set
             {
+                if (value == _name)
+                {
+                    return;
+                }
                 _name = value;
                 OnPropertyChanged();
             }
         }
-
         #endregion
     }
 }

@@ -1,14 +1,11 @@
 ﻿#region File info
 // *********************************************************************************************************
-// Funcular.Ontology>Funcular.Ontology>Modifyable.cs
-// Created: 2015-07-01 2:19 PM
-// Updated: 2015-07-01 2:26 PM
-// By: Paul Smith 
+// Funcular.Ontology.Archetypes.Modifyable.cs
 // 
 // *********************************************************************************************************
 // LICENSE: The MIT License (MIT)
 // *********************************************************************************************************
-// Copyright (c) 2010-2015 <copyright holders>
+// Copyright (c) 2010-2017 Funcular Labs and Paul Smith
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,29 +32,39 @@
 #region Usings
 
 using System;
+using System.Collections.Generic;
 
 #endregion
 
 
 namespace Funcular.DotNetCore.Ontology.Archetypes
 {
-    public abstract class Modifyable<TId> : Createable<TId>, IModifyable<TId>
+    public abstract class Modifyable<TId> : Createable<TId>, IModifyable<TId> where TId : IEquatable<TId>
     {
+        #region Nonpublic fields
         protected TId _modifiedBy;
+        #endregion
+
 
         #region Implementation of IModifyable
-
         public virtual DateTime DateModifiedUtc { get; set; } = DateTime.UtcNow;
+
+        /// <summary>
+        /// The <b>Id</b> of the Principal who last modified this entity.
+        /// </summary>
         public virtual TId ModifiedBy
         {
             get => this._modifiedBy;
             set
             {
+                if (EqualityComparer<TId>.Default.Equals(value, _modifiedBy))
+                {
+                    return;
+                }
                 this._modifiedBy = value; 
                 OnPropertyChanged();
             }
         }
-
         #endregion
     }
 }

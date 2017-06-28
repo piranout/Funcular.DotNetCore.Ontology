@@ -1,14 +1,11 @@
 ﻿#region File info
 // *********************************************************************************************************
-// Funcular.Ontology>Funcular.Ontology>Createable.cs
-// Created: 2015-07-01 2:16 PM
-// Updated: 2015-07-01 2:50 PM
-// By: Paul Smith 
+// Funcular.Ontology.Archetypes.Createable.cs
 // 
 // *********************************************************************************************************
 // LICENSE: The MIT License (MIT)
 // *********************************************************************************************************
-// Copyright (c) 2010-2015 <copyright holders>
+// Copyright (c) 2010-2017 Funcular Labs and Paul Smith
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,18 +30,22 @@
 
 
 #region Usings
-
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Funcular.DotNetCore.Ontology.Annotations;
-
 #endregion
 
 
 namespace Funcular.DotNetCore.Ontology.Archetypes
 {
-    public abstract class Createable<TId> : ICreateable<TId>
+    /// <summary>
+    /// This is the base abstract class from which every entity ultimately derives.
+    /// 
+    /// </summary>
+    /// <typeparam name="TId"></typeparam>
+    public abstract class Createable<TId> : ICreateable<TId>  where TId : IEquatable<TId>
     {
         #region Nonpublic fields
         protected TId _createdBy;
@@ -58,9 +59,9 @@ namespace Funcular.DotNetCore.Ontology.Archetypes
         /// If you override this constructor, you will need to re-implement
         /// the identity assignment function.
         /// </summary>
-        protected Createable()
+        protected Createable(bool suppressIdGeneration = false)
         {
-            if (IdentityFunction != null)
+            if (suppressIdGeneration == false && IdentityFunction != null)
                 this._id = IdentityFunction();
         }
         #endregion
@@ -73,6 +74,10 @@ namespace Funcular.DotNetCore.Ontology.Archetypes
             get => _id;
             set
             {
+                if (EqualityComparer<TId>.Default.Equals(_id, value))
+                {
+                    return;
+                }
                 _id = value;
                 OnPropertyChanged();
             }
@@ -83,6 +88,12 @@ namespace Funcular.DotNetCore.Ontology.Archetypes
 
         #region Implementation of ICreateable
 
+        /// <summary>
+        /// This property should not change in the regular course of 
+        /// business, which is why PropertyChanged is not implemented here.
+        /// The setter will be called by framework methods though, making
+        /// it impractical to make the property read-only.
+        /// </summary>
         public virtual DateTime DateCreatedUtc
         {
             get => _dateCreatedUtc;
@@ -98,6 +109,10 @@ namespace Funcular.DotNetCore.Ontology.Archetypes
             get => this._createdBy;
             set
             {
+                if (EqualityComparer<TId>.Default.Equals(_createdBy, value))
+                {
+                    return;
+                }
                 this._createdBy = value; 
                 OnPropertyChanged();
             }
@@ -123,6 +138,11 @@ namespace Funcular.DotNetCore.Ontology.Archetypes
         #region OnPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// This invocator should be called by derived classes in
+        /// their property setters. 
+        /// </summary>
+        /// <param name="propertyName"></param>
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
