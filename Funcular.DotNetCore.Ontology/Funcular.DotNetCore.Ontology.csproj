@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Version>0.9.0</Version>
+    <Description>A coherent and convenient set of interfaces and base classes for entity domains.</Description>
+    <Authors>Funcular Labs and Paul C Smith</Authors>
+    <Copyright>2014 - 2017 Funcular Labs and Paul C Smith</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/piranout/Funcular.DotNetCore.Ontology</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/piranout/Funcular.DotNetCore.Ontology</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>ddd, domain driven design, entities</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
